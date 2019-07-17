@@ -24,7 +24,7 @@ class PageContactController extends AbstractController
             $entityManager->persist($contact);
             $entityManager->flush();
 
-            return $this->redirectToRoute('contact_index');
+            return $this->redirectToRoute('home');
         }
 
         return $this->render('page_contact/index.html.twig', [
