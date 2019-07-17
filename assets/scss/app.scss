@@ -2,6 +2,8 @@
 @import "~bootstrap/scss/bootstrap";
 
 
+
+
 /*Navbar*/
 .sticky {
   position: fixed;
@@ -24,4 +26,13 @@
   background-position: 100% 70%;
   color: #f6f6f6;
   text-shadow: black 0.2em 0.1em 0.2em;
+}
+
+.parallax {
+  background-image: url("../images/jumbotron.jpg");
+  height: 250px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
