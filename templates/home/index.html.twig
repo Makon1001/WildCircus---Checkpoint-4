@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+
+
+
+{% block body %}
+
+    <h1>Toutes nos actualités </h1>
+
+    <div class="row">
+    {% for actu in actus %}
+            <div class="card col-12 col-md-6 col-lg-4" style="width: 18rem;">
+                <img src="./images/actualites/{{ actu.image }}" class="card-img-top" alt="{{ actu.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ actu.title }}</h5>
+                    <h6>{{ actu.subtitle }}</h6>
+                    <p class="card-text">{{ actu.content }}</p>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+
+    <hr class="mt-5 mb-5"/>
+
+    <h1>Nos spectacles</h1>
+
+    <div class="row">
+    {% for spectacle in spectacles %}
+        <div class="card col-12 col-md-6 col-lg-4" style="width: 18rem;">
+            <img src="./images/spectacles/{{ spectacle.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ spectacle.name }}</h5>
+                <p class="card-text">{{ spectacle.content }}</p>
+                <p class="card-text">{{ spectacle.date |date('Y-m-d')}}</p>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalResa" data-whatever="@mdo">Réserver un billet</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+    {%  include "modalResa.html.twig"%}
+
+{% endblock %}

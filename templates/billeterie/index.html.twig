@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BilleterieController!{% endblock %}
+
+{% block body %}
+    <h1>Nos spectacles</h1>
+
+
+<div class="row">
+    {% for spectacle in spectacles %}
+        <div class="card mb-3 col-12 col-md-6 col-lg-4" style="width: 18rem;">
+            <img src="./images/spectacles/{{ spectacle.image }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ spectacle.name }} à
+                    {% for ville in spectacle.villes %}
+                        {{ ville.nom}}
+                    {% endfor %}
+                </h5>
+                <p class="card-text">{{ spectacle.content }}</p>
+                <p class="card-text">{{ spectacle.date |date('Y-m-d')}} à {{ spectacle.date | date('H') }}h !</p>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalResa" data-whatever="@mdo">Réserver un billet</button>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+{%  include "modalResa.html.twig"%}
+
+
+
+{% endblock %}

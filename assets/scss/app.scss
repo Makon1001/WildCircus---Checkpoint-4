@@ -1,0 +1,27 @@
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+
+/*Navbar*/
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 40px;
+}
+
+#navbarPosition {
+  z-index: 20;
+}
+
+.jumbotron {
+  background-image: url("../images/jumbotron.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 100% 70%;
+  color: #f6f6f6;
+  text-shadow: black 0.2em 0.1em 0.2em;
+}

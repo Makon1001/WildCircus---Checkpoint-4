@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ValidationCommandeController!{% endblock %}
+
+{% block body %}
+
+<h1>Recapitulation de votre commande : </h1>
+
+    <div class="row">
+        <div class="col-12 col-md-6 ">
+            <h2>Vos coordonnées :</h2>
+            <p> Votre nom : {{ reservation.nom }}</p>
+            <p> Votre prénom : {{ reservation.prenom }}</p>
+            <p> Votre email : {{ reservation.email }}</p>
+
+        </div>
+        <div class="col-12 col-md-6 ">
+            <h2>Votre commande :</h2>
+            <p> Votre numéro de commande : {{ reservation.id }}</p>
+            {% for spectacle in reservation.spectacle %}
+                <p>Nom du spectacle : "{{ spectacle.name }}"</p>
+                <p>Date du spectacle : {{ spectacle.date | date('d-m-Y') }}</p>
+                <p>Heure du spectacle : {{ spectacle.date | date('H-i') }}</p>
+                <h3>Tarifs</h3>
+                <table class="table">
+                    <tr>
+                        <th>Enfant semaine</th>
+                        <th>Enfant week end</th>
+                        <th>Adulte semaine</th>
+                        <th>Adulte Week end</th>
+                    </tr>
+                    <tr>
+                        <td>{{ spectacle.tarifEnfantSemaine }}€</td>
+                        <td>{{ spectacle.tarifEnfantWe }}€</td>
+                        <td>{{ spectacle.tarifAdultSemaine }}€</td>
+                        <td>{{ spectacle.tarifAdultWe }}€</td>
+                    </tr>
+                </table>
+            {% endfor %}
+            <p> Le nombre d'enfant : {{ reservation.nbEnfant }}</p>
+            <p> Le nombre d'adulte : {{ reservation.nbAdulte }}</p>
+            <h3> Prix Total :  {{ totalPrice }}€</h3>
+
+
+            {{ include('validation_commande/_delete_form.html.twig') }}
+            <a class="btn btn-success"  href="{{ path('home') }}">Valider</a>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Spectacle index{% endblock %}
+
+{% block body %}
+    <h1>Spectacle index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Ville</th>
+                <th>PlaceDispo</th>
+                <th>Date</th>
+                <th>TarifEnfantSemaine</th>
+                <th>TarifEnfantWE</th>
+                <th>TarifAdultSemaine</th>
+                <th>TarifAdultWE</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+
+        {% for spectacle in spectacles %}
+            <tr>
+                <td>{{ spectacle.id }}</td>
+                <td>{{ spectacle.name }}</td>
+               <td><ul>
+                       {% for ville in spectacle.villes %}
+                           <li>{{ ville.nom}} </li>
+                       {% else %}
+                           <li>No city for this spectacle</li>
+                       {% endfor %}
+                   </ul></td>
+                <td>{{ spectacle.placeDispo }}</td>
+                <td>{{ spectacle.date ? spectacle.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ spectacle.tarifEnfantSemaine }}</td>
+                <td>{{ spectacle.tarifEnfantWE }}</td>
+                <td>{{ spectacle.tarifAdultSemaine }}</td>
+                <td>{{ spectacle.tarifAdultWE }}</td>
+                <td>
+                    <a href="{{ path('spectacle_show', {'id': spectacle.id}) }}">show</a>
+                    <a href="{{ path('spectacle_edit', {'id': spectacle.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('spectacle_new') }}">Create new</a>
+{% endblock %}
